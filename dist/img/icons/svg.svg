@@ -1,0 +1,13 @@
+<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>Layer 1</title>
+  <g>
+   <desc>Created with Fabric.js 4.6.0</desc>
+
+   <g id="svg_1" transform="matrix(1.1 0 0 1.1 250.79 250.79)">
+    <path fill-rule=" evenodd" fill=" rgb(19,12,58)" stroke-miterlimit="4" stroke-linejoin=" miter" stroke-dashoffset="0" stroke-dasharray=" none" stroke=" none" stroke-linecap=" butt" d="m-0.71819,-0.71819l0,455l455,0l0,-455l-455,0zm301.004,125.217l-35.564,0c-7.044,0 -14.153,7.28 -14.153,12.696l0,36.264l49.647,0c-1.999,27.807 -6.103,53.235 -6.103,53.235l-43.798,0l0,157.588l-65.266,0l0,-157.605l-31.771,0l0,-53.029l31.771,0l0,-43.356c0,-7.928 -1.606,-61.009 66.872,-61.009l48.366,0l0,55.216l-0.001,0z" transform="translate(-227.5 -227.5)" vector-effect="non-scaling-stroke"/>
+   </g>
+  </g>
+ </g>
+</svg>
