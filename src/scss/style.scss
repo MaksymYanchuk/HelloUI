@@ -657,7 +657,7 @@ body {
     margin-bottom: 150px;
 }
 
-.services-title {
+.services__title {
     font-family: "Inter";
     font-size: 72px;
     font-weight: 900;
@@ -667,14 +667,8 @@ body {
     padding-bottom: 0.5em;
 }
 
-.page__services__container__list__develop__text_block__title {
-    text-align: left;
-}
 
-.page__services__container__list__develop__text_block__text {
-}
-
-.services-text {
+.services__text {
     font-family: Inter;
     font-size: 20px;
     font-weight: 400;
@@ -686,7 +680,7 @@ body {
 
 }
 
-.services-link {
+.services__link {
     font-family: Inter;
     font-size: 18px;
     font-weight: 500;
@@ -706,10 +700,10 @@ body {
 }
 
 .services__img-block {
-    max-width: 100%;
+
 }
-.services__img-block__img{
-    max-width: 658px;
+.services__image img{
+    max-width: 100%;
 }
 .services__list__build {
     justify-content: flex-start;
@@ -728,7 +722,10 @@ body {
 
 @media (max-width: 1349.98px ){
     .services__header__title {
-
+        max-width: 1000px;
+        font-size: 38px;
+        line-height: 42px;
+        padding-bottom: 20px;
     }
     .services__header__subtitle {
         max-width: 85%
@@ -743,28 +740,21 @@ body {
         margin-bottom: 190px;
     }
     .services__list__item {
+        gap: 0;
+        justify-content: center;
+        margin-bottom: 50px;
     }
     
-    .services-title {
-        font-family: "Inter";
+    .services__title {
         font-size: 60px;
-        font-weight: 900;
         text-align: left;
-        color: #050038;
         padding-bottom: 0.5em;
-    }
-    
-    .page__services__container__list__develop__text_block__title {
-        text-align: left;
     }
     
     .services__text-block{
         max-width: 100%;
     }
-    .services-text {
-        font-family: Inter;
-        font-size: 18px;
-        font-weight: 400;
+    .services__text {
         line-height: 24px;
         letter-spacing: 0em;
         text-align: left;
@@ -772,7 +762,7 @@ body {
         max-width: 450px;
     }
     
-    .services-link {
+    .services__link {
         font-family: Inter;
         font-size: 16px;
         font-weight: 500;
@@ -788,81 +778,93 @@ body {
     .services__img-block__img{
         width: 100%;
     }
-
+    .services__list:last-child{
+        margin-bottom: 100px;
+    }
 }
 
 @media (max-width: 990.98px ){
     .services__header__title {
-
+        max-width: 1000px;
+        font-size: 32px;
+        line-height: 34px;
+        padding-bottom: 11px
     }
     .services__header__subtitle {
+        font-size: 18px;
+        line-height: 22px;
         max-width: none;
     }
     .services__button_wrapper {
-
+        margin-bottom: 40px;
     }
     .services__list {
-
     }
-    .services-title{
-
+    .services__list__item {
+    margin-bottom:10px ;
     }
-    .services-text{
+    .services__title {
+        font-family: "Inter";
+        font-size: 46px;
+        padding-bottom: 0.1em;
     }
-
+    
+    .services__text {
+        font-size: 16px;
+    }
+    .services__list:last-child{
+        margin-bottom: 60px;
+    }
 } 
 
 @media (max-width: 767.98px ){
     .services__header{
-
     }
-    .services__header__title {
-        margin: 0 auto;
-        max-width: 1000px;
-        font-family: "Inter";
-        font-size: 22px;
-        font-weight: 700;
-        line-height: 26px;
-        color: #050038;
-        padding-bottom: 10px;
+    .services__list__item {
+        flex-direction: column ;
+        }
+    .services__title {
         text-align: center;
+        font-size: 32px;
+        line-height: 26px;
+        padding-bottom: 10px;
     }
     .services__header__subtitle {
         margin: 0 auto;
         text-align: center;
-        font-family: "Inter";
         font-size: 16px;
-        font-weight: 400;
         line-height: 20px;
-        letter-spacing: 0em;
         text-align: center;
         padding-bottom: 25px;
     }
     .services__button_wrapper {
+        margin-bottom: 50px;
     }
     .services__button {
         gap: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #0555FF;
-        width: 200px;
-        height: 46px;
-        background: rgba(5, 85, 255, 0.1019607843);
-        border: none;
-        border-radius: 25px;
-        font-family: Inter;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 32px;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
+        width: 195px;
+        height: 40px;
+        font-size: 12px;
     }
-    .services-title{
-
+    .services__text{
+        text-align: center;
+        max-width: none;
+        padding-bottom: 10px;
     }
-    .services-text{
+    .services__text-block{
+        text-align: center;
+        max-width: none;
+        order: 2;
     }
-
+    .services__image{
+        order: 3;
+    }
+    .services-link{
+        order: 1;
+    }
+    .services__list:last-child{
+        margin-bottom: 25px;
+    }
 }
 
 
@@ -871,19 +873,19 @@ body {
 .page__reviews {
     background-color:#F8F8FA;;
 }
-.page__reviews__container {
+.reviews__container {
 
 }
-.page__reviews__text {
+.reviews__text {
     font-family: Inter;
     font-size: 16px;
     font-weight: 400;
-    line-height: 32px;
+    line-height: 24px;
     letter-spacing: 0em;
     text-align: center;
     margin-bottom: 40px;
 }
-.page__reviews__title {
+.reviews__title {
     font-family: Inter;
     font-size: 72px;
     font-weight: 900;
@@ -894,47 +896,49 @@ body {
 
 
 }
-.page__reviews__container__content {
+.reviews__content {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
+    justify-content: center;
+    max-width: 1600px;
+    margin: 0 auto;
 }
-.page__reviews__container__content__review {
-    height: 370px;
-    width: 420px;
+.reviews__content__review {
+    min-height: 370px;
+    max-width: 420px;
     background: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    margin-bottom: 63px;
+    margin: 0 10px 64px 10px;
 }
 
-.page__reviews__container__content__review__wrapper {
-    max-width: 90.4761904762%;
-
+.reviews__content__review__wrapper {
+    padding: 20px;
 }
-.page__reviews__container__content__review__wrapper__info {
+.reviews__content__review__wrapper__info {
     display: flex;
     align-items: center;
-    padding-top: 20px;
     justify-content: space-between;
+    padding-bottom: 10px;
 }
-.page__reviews__container__content__review__wrapper__info__user {
+.reviews__content__review__wrapper__info__user {
     display: flex;
     margin: 0;
 }
-.page__reviews__container__content__review__wrapper__info__user__avatar {
+.reviews__content__review__wrapper__info__user__avatar {
     padding-right: 12px;
 }
-.page__reviews__container__content__review__wrapper__info__user__about {
+.reviews__content__review__wrapper__info__user__about {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
-.page__reviews__container__content__review__wrapper__info__user__about__name-and-icon {
+.reviews__content__review__wrapper__info__user__about__name-and-icon {
     display: flex;
     margin: 0;
 }
-.page__reviews__container__content__review__wrapper__info__user__about__name{
+.reviews__content__review__wrapper__info__user__about__name{
     font-family: "Inter";
     font-size: 16px;
     font-weight: 500;
@@ -945,10 +949,10 @@ body {
     text-align: left;
     margin: 0;
 }
-.page__reviews__container__content__review__wrapper__info__user__about__icon {
+.reviews__content__review__wrapper__info__user__about__icon {
     margin: 0;
 }
-.page__reviews__container__content__review__wrapper__info__user__username {
+.reviews__content__review__wrapper__info__user__username {
     font-family: "Inter";
     font-size: 16px;
     font-weight: 400;
@@ -956,33 +960,64 @@ body {
     letter-spacing: 0em;
     margin: 0;
 }
-.page__reviews__container__content__review__wrapper__info__icon {
-    margin: 0;
+.reviews__content__review__wrapper__info__icon {
 }
-.page__reviews__container__content__review__wrapper__text {
+.reviews__content__review__wrapper__text {
     font-family: Inter;
     font-size: 14px;
     font-weight: 400;
     line-height: 24px;
     letter-spacing: 0em;
     text-align: left;
-    white-space: pre-line;
     color: #050038;
 
 }
-.page__reviews__container__content__review__wrapper__text__content {
+.reviews__content__review__wrapper__text__content {
 }
+@media (max-width: 1349.98px ){
+    .reviews__text {
+    }
+    .reviews__title {
+        font-size: 62px;
+        margin-bottom: 50px;
+    }
+}
+@media (max-width: 990.98px ){
+    .reviews__text {
+        margin-bottom: 20px;
+
+    }
+    .reviews__title {
+        font-size: 48px;
+        margin-bottom: 50px;
+    }
+    .reviews__content__review{
+        margin: 0 10px 1rem 10px;
+    }
+}
+@media (max-width: 767.98px ){
+    .reviews__text {
+        padding: 0 10px 0 10px;
+
+    }
+    .reviews__title {
+        padding: 0 10px 0 10px;
+        font-size: 36px;
+        margin-bottom: 30px;
+    }
+}
+
 
 // GET STARTED
 
 .get-started {
     background: url(../img/main/get\ started.svg);
 }
-.get-started__container {
+.get-started__wrapper {
     
 }
 
-.get-started__container__title {
+.get-started__title {
     font-family: "Inter";
     font-size: 72px;
     font-weight: 900;
@@ -995,7 +1030,7 @@ body {
     margin-bottom: 40px;
     display: inline-flex;
 }
-.get-started__container__form {
+.get-started__form {
     display: inline-flex;
     justify-content: center;
     box-sizing: border-box;
@@ -1003,7 +1038,7 @@ body {
     padding-left: 157px;
 
 }
-.form-get-started__container__input {
+.form-get-started__input {
     box-sizing: border-box;
     height: 80px;
     width: 528px;
@@ -1021,7 +1056,7 @@ body {
     color: #C1C1C1;
     margin: 0;
 }
-.form-get-started__container__input::placeholder {
+.form-get-started__input::placeholder {
     font-family: Inter;
     font-size: 22px;
     font-weight: 400;
@@ -1030,12 +1065,12 @@ body {
     text-align: left;
     color: #C1C1C1;
 
-    .form-get-started__container__input:enabled{
+    .form-get-started__input:enabled{
         border: none;
     }
 
 }
-.get-started__container__form__button {
+.get-started__form__button {
     box-sizing: border-box;
     height: 32px;
     width: 122px;
@@ -1054,17 +1089,17 @@ body {
     text-align: center;
 
 }
-.get-started__container__footer {
+.get-started__footer {
 }
-.get-started__container__footer__content {
+.get-started__footer__content {
     display: flex;
     margin-left: -10.75%;
 }
-.get-started__container__footer__content__info {
+.get-started__footer__content__info {
 margin: 0;
 padding: 0px 250px 0px 20px;
 }
-.get-started__container__footer__content__info__title {
+.get-started__footer__content__info__title {
 }
 .footer-title {
     font-family: Inter;
@@ -1077,9 +1112,9 @@ padding: 0px 250px 0px 20px;
     padding-bottom: 33px;
     
 }
-.get-started__container__footer__content__info__text {
+.get-started__footer__content__info__text {
 }
-.get-started__container__footer__content__info__text__address {
+.get-started__footer__content__info__text__address {
 }
 .footer-text {
     padding-bottom: 10px;
@@ -1093,30 +1128,30 @@ padding: 0px 250px 0px 20px;
 .footer-text:nth-child(3) {
     padding-bottom: 30px;
 }
-.get-started__container__footer__content__info__title_phone-number {
+.get-started__footer__content__info__title_phone-number {
 }
-.get-started__container__footer__content__info__title__mail {
+.get-started__footer__content__info__title__mail {
 }
-.get-started__container__footer__content__info__title__icons {
+.get-started__footer__content__info__title__icons {
     display:inline-flex;
     gap: 25px;
 }
-.get-started__container__footer__content__info__title__icons__icon {
+.get-started__footer__content__info__title__icons__icon {
     width: 20px;
     height: 20px;
     fill: red;
 }
 
-.get-started__container__footer__content__nav {
+.get-started__footer__content__nav {
     display: flex;
     justify-content: space-between;
     margin: 0;
     padding: 15px 0px 0px 0px;
     
 }
-.get-started__container__footer__content__nav__list {
+.get-started__footer__content__nav__list {
 }
-.get-started__container__footer__content__nav__item {
+.get-started__footer__content__nav__item {
 }
 .nav-title {
     font-family: "Inter";
@@ -1128,7 +1163,7 @@ padding: 0px 250px 0px 20px;
     color: #FFFFFF;
 
 }
-.get-started__container__footer__content__nav__link {
+.get-started__footer__content__nav__link {
 }
 .nav-title{
     padding-bottom: 15px;
