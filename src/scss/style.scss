@@ -820,6 +820,11 @@ body {
 @media (max-width: 767.98px ){
     .services__header{
     }
+    .services__header__title {
+        font-size: 24px;
+        line-height: 24px;
+        padding-bottom: 11px
+    }
     .services__list__item {
         flex-direction: column ;
         }
@@ -832,7 +837,7 @@ body {
     .services__header__subtitle {
         margin: 0 auto;
         text-align: center;
-        font-size: 16px;
+        font-size: 14px;
         line-height: 20px;
         text-align: center;
         padding-bottom: 25px;
@@ -872,6 +877,7 @@ body {
 
 .page__reviews {
     background-color:#F8F8FA;;
+    padding-bottom:115px;
 }
 .reviews__container {
 
@@ -884,6 +890,7 @@ body {
     letter-spacing: 0em;
     text-align: center;
     margin-bottom: 40px;
+    padding-top: 150px;
 }
 .reviews__title {
     font-family: Inter;
@@ -905,12 +912,11 @@ body {
     margin: 0 auto;
 }
 .reviews__content__review {
-    min-height: 370px;
+    min-height: auto;
     max-width: 420px;
     background: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    margin: 0 10px 64px 10px;
 }
 
 .reviews__content__review__wrapper {
@@ -950,7 +956,7 @@ body {
     margin: 0;
 }
 .reviews__content__review__wrapper__info__user__about__icon {
-    margin: 0;
+
 }
 .reviews__content__review__wrapper__info__user__username {
     font-family: "Inter";
@@ -961,6 +967,7 @@ body {
     margin: 0;
 }
 .reviews__content__review__wrapper__info__icon {
+    padding-left:10px;
 }
 .reviews__content__review__wrapper__text {
     font-family: Inter;
@@ -976,6 +983,7 @@ body {
 }
 @media (max-width: 1349.98px ){
     .reviews__text {
+        padding-top: 80px;
     }
     .reviews__title {
         font-size: 62px;
@@ -984,6 +992,7 @@ body {
 }
 @media (max-width: 990.98px ){
     .reviews__text {
+        padding-top: 40px;
         margin-bottom: 20px;
 
     }
@@ -995,15 +1004,33 @@ body {
         margin: 0 10px 1rem 10px;
     }
 }
-@media (max-width: 767.98px ){
+@media (max-width: 909.98px ){
+    .page__reviews {
+        padding-bottom:30px;
+    }
+    .reviews__content{
+        flex-direction:column;
+        align-items: center;
+    }
+    .reviews__content__review__wrapper {
+        padding: 10px;
+    }
+    .reviews__content{
+        gap: 5px;
+    }
     .reviews__text {
-        padding: 0 10px 0 10px;
+        padding: 10px 10px 0 10px;
 
     }
     .reviews__title {
         padding: 0 10px 0 10px;
-        font-size: 36px;
+        font-size: 32px;
         margin-bottom: 30px;
+    }
+    .reviews__content__review__wrapper__text {
+        font-family: Inter;
+        font-size: 14px;
+        line-height: 20px;
     }
 }
 
@@ -1011,10 +1038,9 @@ body {
 // GET STARTED
 
 .get-started {
-    background: url(../img/main/get\ started.svg);
+    background: #130C3A;
 }
 .get-started__wrapper {
-    
 }
 
 .get-started__title {
@@ -1022,23 +1048,19 @@ body {
     font-size: 72px;
     font-weight: 900;
     line-height: 85px;
-    letter-spacing: 0em;
     text-align: center;
-    white-space: pre-line;
     color: #FFFFFF;
-    padding: 150px 0px 0px 210px;
-    margin-bottom: 40px;
-    display: inline-flex;
+    padding-top: 156px;
+    margin: 0 0 55px 412px;
+    max-width: 652px;
 }
 .get-started__form {
     display: inline-flex;
     justify-content: center;
     box-sizing: border-box;
-    margin-bottom: 150px;
-    padding-left: 157px;
-
+    margin: 0px 0 150px 358px;
 }
-.form-get-started__input {
+.get-started__form__input {
     box-sizing: border-box;
     height: 80px;
     width: 528px;
@@ -1050,11 +1072,11 @@ body {
     font-size: 22px;
     font-weight: 400;
     line-height: 32px;
-    letter-spacing: 0em;
     text-align: left;
     padding-left: 30px;
     color: #C1C1C1;
     margin: 0;
+    outline: none;
 }
 .form-get-started__input::placeholder {
     font-family: Inter;
@@ -1064,12 +1086,8 @@ body {
     letter-spacing: 0em;
     text-align: left;
     color: #C1C1C1;
-
-    .form-get-started__input:enabled{
-        border: none;
-    }
-
 }
+
 .get-started__form__button {
     box-sizing: border-box;
     height: 32px;
@@ -1087,21 +1105,31 @@ body {
     line-height: 32px;
     letter-spacing: 0em;
     text-align: center;
-
 }
+.get-started__form__button:hover {
+    cursor: pointer;
+}
+
+
+
+// GET-STARTED__FOOTER///
+
+
+
 .get-started__footer {
+    margin: 0 0 52px 72px;
 }
 .get-started__footer__content {
     display: flex;
-    margin-left: -10.75%;
+    width: 100vw;
+}
+.footer__block{
+    padding-right: 80px;
 }
 .get-started__footer__content__info {
-margin: 0;
-padding: 0px 250px 0px 20px;
+    flex: 0 1 29.74%;
 }
 .get-started__footer__content__info__title {
-}
-.footer-title {
     font-family: Inter;
     font-size: 28px;
     font-weight: 700;
@@ -1110,8 +1138,8 @@ padding: 0px 250px 0px 20px;
     text-align: left;
     color: #FFFFFF;
     padding-bottom: 33px;
-    
 }
+
 .get-started__footer__content__info__text {
 }
 .get-started__footer__content__info__text__address {
@@ -1124,6 +1152,7 @@ padding: 0px 250px 0px 20px;
     line-height: 28px;
     letter-spacing: 0em;
     text-align: left;
+    white-space:nowrap
 }
 .footer-text:nth-child(3) {
     padding-bottom: 30px;
@@ -1135,6 +1164,7 @@ padding: 0px 250px 0px 20px;
 .get-started__footer__content__info__title__icons {
     display:inline-flex;
     gap: 25px;
+    padding-left: 15px;
 }
 .get-started__footer__content__info__title__icons__icon {
     width: 20px;
@@ -1144,30 +1174,35 @@ padding: 0px 250px 0px 20px;
 
 .get-started__footer__content__nav {
     display: flex;
-    justify-content: space-between;
-    margin: 0;
     padding: 15px 0px 0px 0px;
-    
+    flex: 1 1 auto;
 }
+.nav-resources{
+    flex: 0 1 21.7%;
+}
+.nav-company{
+    flex: 0 1 18.1%;
+}
+.nav-legal{
+    flex: 1 1 auto;
+}
+
 .get-started__footer__content__nav__list {
 }
 .get-started__footer__content__nav__item {
 }
-.nav-title {
+.nav__title {
     font-family: "Inter";
     font-size: 20px;
     font-weight: 500;
     line-height: 25px;
-    letter-spacing: 0em;
     text-align: left;
     color: #FFFFFF;
-
+    padding-bottom: 15px;
 }
 .get-started__footer__content__nav__link {
 }
-.nav-title{
-    padding-bottom: 15px;
-}
+
 .nav-text{
     font-family: Inter;
     font-size: 16px;
@@ -1176,26 +1211,186 @@ padding: 0px 250px 0px 20px;
     letter-spacing: 0em;
     text-align: left;
     color: #7884A6;
+    white-space: nowrap;
 }
 .nav-text:hover{ 
     text-decoration: underline;
 }
-.nav-resources{
-padding-right:  200px;
+.get-started__decoration__circle_orange {
+    background-color: #FF9D0A;
+    width: 188px;
+    height: 94px;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    position: relative;
+    transform: rotate(-36.08deg);
+    bottom:900px; 
+    
 }
-.nav-company{
-    padding-right: 154px;
+.get-started__decoration__circle_blue {
+    background-color: #0555FF;
+    width: 188px;
+    height: 94px;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    position: relative;
+    transform: rotate(180deg);
+    bottom:1030px;
+    left: 1195px; 
 }
-.nav-legal {
+.get-started__decoration__circle_gray {
+    position: relative;
+    width: 290px;
+    height: 290px;    
+    border: 40px solid rgba(255, 255, 255, 0.05);
+    border-radius: 50% 50% 50% 50%;
+    transform: rotate(-45deg);
+    bottom:258px;
+    left: 1531px; 
 }
-
 .get-started__copyright-protection {
     display: flex;
     align-items: center;
-    padding-left: 645px;
+    padding-left: 33.6vw;
     background-color: #0F0937;
     height: 59px;
     color: #FFFFFF;
     margin: 0;
     width: 100%;
+}
+@media (max-width: 1349.98px ){
+    
+    .get-started__title {
+        font-size: 62px;
+        line-height: 76px;
+        padding-top: 70px;
+        margin: 0 auto 40px auto;
+    }
+    .get-started__form{
+        display: flex;
+        margin: 0 auto 130px auto;
+    }
+    .get-started__form__input {
+        height: 60px;
+        width: 400px;
+        font-size: 18px;
+    }
+    .get-started__form__button {
+        height: 60px;
+        width: 135px;
+        font-size: 18px;
+    }
+    .get-started__footer {
+        margin: 0 0 52px 30px;
+    }
+    .nav-text{
+        font-size: 14px;
+    }
+    .footer-text {
+        font-size: 14px;
+    }
+    .get-started__decoration{
+        display: none;
+    }
+}
+
+ @media (max-width: 990.98px ){
+    .get-started__title {
+        font-size: 48px;
+        line-height: normal;
+        padding-top: 50px;
+    }
+    .get-started__form{
+        display: flex;
+        margin: 0 auto 60px auto;
+    }
+    .get-started__form__input {
+        height: 50px;
+        width: 300px;
+        font-size: 16px;
+        padding-left: 15px;
+    }
+    .get-started__form__button {
+        height: 50px;
+        width: 120px;
+        font-size: 16px;
+    }
+    .footer__block{
+        padding-right: 40px;
+    }
+    .get-started__footer__content__info__title{
+        font-size: 22px;
+    }
+    .nav-text{
+        font-size: 14px;
+    }
+    .nav__title{
+        font-size: 16px;
+    }
+    .footer-text {
+        white-space: pre-wrap;
+        padding-bottom: 0;
+    }
+} 
+
+ @media (max-width: 767.98px ){
+    .get-started__title {
+        font-size: 24px;
+        padding: 30px 5px 0 5px;
+    }
+    .get-started__form{
+        display: flex;
+        margin: 0 auto 50px auto;
+    }
+    .get-started__form__input {
+        height: 36px;
+        width: 40vw;
+        font-size: 12px;
+    }
+    .get-started__form__button {
+        height: 36px;
+        width: 80px;
+        font-size: 12px;
+    }
+    .get-started__footer{
+        margin: 0;
+        padding: 0 10px 0 10px;
+    }
+    .get-started__footer__content{
+        flex-direction: column-reverse;
+    }
+    .get-started__footer__content__nav{
+        justify-content: space-between;
+        gap: 3px;
+        margin-bottom: 20px;
+    }
+    .footer__block{
+        flex: 0 1 33.333%;
+        padding: 0;
+    }
+    .get-started__footer__content__info__title{
+        padding-bottom: 5px;
+    }
+    .footer-text:nth-child(3){
+        padding-bottom: 10px;
+    }
+    .nav-text{
+    }
+    .get-started__footer__content__info__title{
+        line-height: normal;
+    }
+    .footer-text{
+        line-height: normal;
+        padding-bottom: 5px;
+    }
+    .nav-text {
+        line-height:28px;
+        white-space: pre-wrap;
+    }
+    .get-started__footer__content__info__title__icons{
+        padding-left: 0;
+    }
+    .get-started__copyright-protection{
+        padding-left: 0;
+        justify-content: center;
+        font-size: 14px;
+    }
 }
