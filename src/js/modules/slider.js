@@ -10,13 +10,11 @@ function slider({container, slide, field, dots, dotsItem, prevArrow, nextArrow})
   let offset = 0;
   let itemToShow;
   let rectanglesToShow;
-  let sliderLineWidth;
   let currentElement = 0;
   let rightElement = currentElement + 1;
   let leftElement = currentElement - 1;
-  let itemWidth =
-    parseInt(getComputedStyle(sliderItem).width) +
-    parseInt(getComputedStyle(sliderLine).gap);
+
+  let itemWidth = parseInt(getComputedStyle(sliderItem).width) + parseInt(getComputedStyle(sliderLine).gap);
   
   function sliderLoad() {
     if (window.innerWidth > 1349.98) {
@@ -77,8 +75,6 @@ function slider({container, slide, field, dots, dotsItem, prevArrow, nextArrow})
       newElement.addEventListener('click', () => {
         offset = i * itemWidth;
         sliderLine.style.left = -offset + "px";
-        console.log(itemWidth)
-        console.log(i)
         currentElement = i;
         rightElement = currentElement + 1;
         leftElement = currentElement - 1;
@@ -164,10 +160,6 @@ function slider({container, slide, field, dots, dotsItem, prevArrow, nextArrow})
     itemsCheck();
     uncolor();
     colorElements();
-  });
-  console.log(dots);
-  document.querySelector(dots).addEventListener('click', (e) => {
-    console.log(e)
   });
 
   window.addEventListener("resize", sliderLoad);

@@ -15,7 +15,7 @@ export const path = {
         files: `${buildFolder}/files`
     },
     src: {
-        js: `${srcFolder}/js/**/*.js`,
+        js: `${srcFolder}/js/app.js`,
         images: `${srcFolder}/img/**/*.{jpg,jpeg,png,gif,webp}`,
         svg: `${srcFolder}/img/**/*.svg`,
         scss: `${srcFolder}/scss/style.scss`,
