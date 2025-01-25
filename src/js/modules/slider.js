@@ -1,170 +1,197 @@
-function slider({container, slide, field, dots, dotsItem, prevArrow, nextArrow}) {
+function slider({ sliderSelector, сonfig }) {
+  const _defaults = {
+    currentSlide: 0,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    isPagination: true,
+    gap: 10,
+    slideWidth: 120,
+    slideHeight: "auto",
+    dotsContainerClass: "slider-pagination-container",
+    dotClass: "slider-dot",
+    dotActiveClass: "slider-active",
+    prevButtonClasses: "slider__button slider__button_prev",
+    nextButtonClasses: "slider__button slider__button_next",
+    responsive: null,
+  };
 
-  const sliderContainer = document.querySelector(container);
-  const sliderLine = document.querySelector(field);
-  const sliderItem = document.querySelector(slide);
-  const sliderIndicator = document.querySelector(dots);
-  const buttonPrev = document.querySelector(prevArrow);
-  const buttonNext = document.querySelector(nextArrow);
-  
-  let offset = 0;
-  let itemToShow;
-  let rectanglesToShow;
-  let currentElement = 0;
-  let rightElement = currentElement + 1;
-  let leftElement = currentElement - 1;
+  const settings = mergeSettings(_defaults, сonfig);
 
-  let itemWidth = parseInt(getComputedStyle(sliderItem).width) + parseInt(getComputedStyle(sliderLine).gap);
-  
-  function sliderLoad() {
-    if (window.innerWidth > 1349.98) {
-      itemToShow = 6;
-    } else if (window.innerWidth <= 1349.98 && window.innerWidth > 990.98) {
-      itemToShow = 5;
-    } else if (window.innerWidth <= 990.98 && window.innerWidth > 767.98) {
-      itemToShow = 4;
-    } else if (window.innerWidth <= 767.98 && window.innerWidth > 599.98) {
-      itemToShow = 3;
-    } else if (window.innerWidth < 599.98) {
-      sliderContainer.style.width = "auto";
-      sliderLine.style.position = "static";
-      sliderContainer.style.margin = "auto";
-      return;
+  let isButtonHandlerAdded = false;
+  let isResizeHandlerAdded = false;
+
+  let offset = settings.currentSlide * settings.slideWidth;
+  const slider = document.querySelector(sliderSelector);
+  const sliderImages = Array.from(slider.children);
+  const imageCount = sliderImages.length;
+  const initialSlidesToShow = settings.slidesToShow;
+
+  slider.innerHTML = "";
+
+  const createElement = (element, classNames) => {
+    const newElement = document.createElement(element);
+    newElement.className = classNames;
+    return newElement;
+  };
+
+  function debounce(f, t) {
+    let timeoutId;
+
+    return function () {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        f();
+      }, t);
+    };
+  }
+
+  const handlerNextBtn = (track) => {
+    settings.currentSlide += settings.slidesToScroll;
+
+    if (settings.currentSlide > imageCount - settings.slidesToShow) {
+      settings.currentSlide = 0;
     }
 
-    rectanglesToShow =
-      (sliderLine.scrollWidth + parseInt(getComputedStyle(sliderLine).gap) + 1) /
-        itemWidth -
-      itemToShow;
-    itemWidth =
-      parseInt(getComputedStyle(sliderItem).width) +
-      parseInt(getComputedStyle(sliderLine).gap);
-    sliderLine.style.position = "relative";
-    sliderContainer.style.width = itemWidth * itemToShow + "px";
-    sliderContainer.style.margin = "0px";
-    resizeCheck();
-    removeElements();
-    addElements();
-    itemsCheck();
-    uncolor();
-    colorElements();
-  }
-  
-  function resizeCheck() {
-    if (
-      offset +
-        itemWidth * itemToShow -
-        parseInt(getComputedStyle(sliderLine).gap) >
-      sliderLine.scrollWidth
-    ) {
-      offset -= itemWidth;
-      sliderLine.style.left = -offset + "px";
-      currentElement -= 1;
-      rightElement = currentElement + 1;
-      leftElement = currentElement - 1;
-    }
-  }
-  
-  function removeElements() {
-    document.querySelectorAll(dotsItem).forEach((item) => item.remove());
-  }
-  
-  function addElements() {
-    for (let i = 0; i < rectanglesToShow; i++) {
-      const newElement = document.createElement("div");
-      newElement.addEventListener('click', () => {
-        offset = i * itemWidth;
-        sliderLine.style.left = -offset + "px";
-        currentElement = i;
-        rightElement = currentElement + 1;
-        leftElement = currentElement - 1;
-        itemsCheck();
-        uncolor();
-        colorElements();
+    updateOffset();
+    changeSlide(offset, track);
+  };
 
+  const handlerPrevBtn = (track) => {
+    settings.currentSlide -= settings.slidesToScroll;
+
+    if (settings.currentSlide < 0) {
+      settings.currentSlide = imageCount - settings.slidesToShow;
+    }
+
+    updateOffset();
+    changeSlide(offset, track);
+  };
+  
+  const handleResize = () => {
+    if (!settings.responsive) return;
+
+    let newSlidesToShow = initialSlidesToShow;
+
+    settings.responsive
+      .sort((a, b) => b.breakpoint - a.breakpoint)
+      .forEach((item) => {
+        if (window.innerWidth <= item.breakpoint) {
+          newSlidesToShow = item.slidesToShow;
+        }
       });
 
-      sliderIndicator.append(newElement);
-      newElement.classList.add(dotsItem.replace(/\./g, ""));
+    if (settings.slidesToShow !== newSlidesToShow) {
+      settings.slidesToShow = newSlidesToShow;
+      loadSlider();
+    }
+  };
+
+  function loadSlider() {
+    slider.innerHTML = "";
+    const { prevButton, nextButton, track } = renderSlider();
+
+    if (settings.isPagination) {
+      const { paginationContainer, paginationDots } = renderPagination();
+      setDotsColor(paginationDots);
+      paginationContainer.addEventListener("click", (event) =>
+        changeSlideByDot(event, paginationDots, track)
+      );
+    }
+
+    if (settings.responsive && !isResizeHandlerAdded) {
+      window.addEventListener("resize", debounce(handleResize, 200));
+      handleResize();
+      isResizeHandlerAdded = true;
+    }
+
+    if (!isButtonHandlerAdded) {
+      nextButton.addEventListener("click", () => handlerNextBtn(track));
+      prevButton.addEventListener("click", () => handlerPrevBtn(track));
+      isButtonHandlerAdded = true;
     }
   }
-  
-  function uncolor() {
-    document.querySelectorAll(dotsItem).forEach((item) => {
-      item.classList.remove("purple");
-      item.classList.remove("light-purple");
+
+  function renderSlider() {
+    const prevButton = createElement("button", settings.prevButtonClasses);
+    const nextButton = createElement("button", settings.nextButtonClasses);
+    const trackContainer = createElement("div", "slider-track-container");
+    const track = createElement("div", "slider-track");
+
+    const visibleSlides = Math.min(settings.slidesToShow, imageCount);
+    const totalWidth = visibleSlides * settings.slideWidth;
+    trackContainer.style.width = `${totalWidth}px`;
+
+    track.style.cssText = `width: ${
+      settings.slideWidth * sliderImages.length
+    }px; right: ${offset}px; gap: ${settings.gap}px`;
+
+    for (let i = 0; i < sliderImages.length; i++) {
+      const imgContainer = createElement("div", "slider-img-container");
+      imgContainer.style.cssText = `width: ${settings.slideWidth}px; height: ${settings.slideHeight}`;
+
+      imgContainer.appendChild(sliderImages[i]);
+      track.appendChild(imgContainer);
+    }
+
+    slider.appendChild(prevButton);
+    slider.appendChild(trackContainer);
+    trackContainer.appendChild(track);
+    slider.appendChild(nextButton);
+
+    return { prevButton, nextButton, track };
+  }
+
+  function renderPagination() {
+    const dotsCount = imageCount - settings.slidesToShow + 1;
+    const paginationDots = [];
+    const paginationContainer = createElement("div", settings.dotsContainerClass);
+
+    slider.appendChild(paginationContainer);
+
+    for (let i = 0; i < dotsCount; i++) {
+      const dot = createElement("button", settings.dotClass);
+      paginationDots.push(dot);
+      paginationContainer.appendChild(dot);
+    }
+
+    return { paginationContainer, paginationDots };
+  }
+
+  function setDotsColor() {
+    if (!settings.isPagination) return;
+    document.querySelectorAll(`.${settings.dotClass}`).forEach((dot, i) => {
+      dot.classList.toggle(settings.dotActiveClass, i === settings.currentSlide);
     });
   }
-  
-  function colorElements() {
-    itemsCheck();
-    sliderIndicator.children[currentElement].classList.add("purple");
-    rightElement !== sliderIndicator.children.length &&
-      rightElement !== sliderIndicator.children.length + 1 &&
-      sliderIndicator.children[rightElement].classList.add("light-purple");
-    leftElement !== -1 &&
-      sliderIndicator.children[leftElement].classList.add("light-purple");
-  }
-  
-  function itemsCheck() {
-    if (currentElement >= document.querySelectorAll(dotsItem).length) {
-      currentElement = 0;
-      leftElement = currentElement - 1;
-      rightElement = currentElement + 1;
-    } else if (currentElement < 0) {
-      currentElement = sliderIndicator.children.length - 1;
-      leftElement = currentElement - 1;
-      rightElement = currentElement + 1;
-    }
-  }
-  
-  buttonNext.addEventListener("click", function () {
-    let sliderLineWidth = parseFloat(sliderLine.scrollWidth);
-    let itemWidth =
-      parseInt(getComputedStyle(sliderItem).width) +
-      parseInt(getComputedStyle(sliderLine).gap);
-    offset += itemWidth;
-    if (
-      offset >
-      sliderLineWidth -
-        itemWidth * itemToShow +
-        parseInt(getComputedStyle(sliderLine).gap)
-    ) {
-      offset = 0;
-    }
-    sliderLine.style.left = -offset + "px";
-    currentElement += 1;
-    rightElement += 1;
-    leftElement += 1;
-    itemsCheck();
-    uncolor();
-    colorElements();
-  });
-  
-  buttonPrev.addEventListener("click", function () {
-    let sliderLineWidth = parseFloat(sliderLine.scrollWidth);
-    let itemWidth =
-      parseInt(getComputedStyle(sliderItem).width) +
-      parseInt(getComputedStyle(sliderLine).gap);
-    offset -= itemWidth;
-    if (offset < 0) {
-      offset =
-        sliderLineWidth -
-        itemWidth * itemToShow +
-        parseInt(getComputedStyle(sliderLine).gap);
-    }
-    sliderLine.style.left = -offset + "px";
-    currentElement -= 1;
-    rightElement -= 1;
-    leftElement -= 1;
-    itemsCheck();
-    uncolor();
-    colorElements();
-  });
 
-  window.addEventListener("resize", sliderLoad);
-  window.onload = sliderLoad();
+  function changeSlideByDot(event, dots, track) {
+    const { target } = event;
+
+    if (!target.classList.contains(settings.dotClass)) return;
+
+    settings.currentSlide = dots.indexOf(target);
+    updateOffset();
+
+    changeSlide(offset, track);
+  }
+
+  function changeSlide(offset, track) {
+    track.style.transform = `translateX(-${offset}px)`;
+
+    if (settings.isPagination) {
+      setDotsColor();
+    }
+  }
+
+  function mergeSettings(defaults, custom) {
+    return { ...defaults, ...custom };
+  }
+
+  function updateOffset() {
+    offset = settings.currentSlide * settings.slideWidth;
+  }
+
+  loadSlider();
 }
-
 
 export default slider;

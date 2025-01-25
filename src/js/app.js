@@ -1,11 +1,25 @@
-import slider from './modules/slider.js';
+import slider from "./modules/slider.js";
 
 slider({
-    container: ".main-block__partners__slider__content",
-    slide:".slider__item-container",
-    field:".main-block__partners__slider-line",
-    dots: ".main-block__partners__slider__indicator",
-    dotsItem: '.indicator',
-    prevArrow: ".main-block__partners__slider-button-prev",
-    nextArrow: ".main-block__partners__slider-button-next",
-})
+  sliderSelector: ".slider",
+  сonfig: {
+    currentSlide: 0,
+    slidesToShow: 4,
+    isPagination: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        slidesToShow: 3,
+      },
+      {
+        breakpoint: 350,
+        slidesToShow: 1,
+      },
+      {
+        breakpoint: 500,
+        slidesToShow: 2,
+      },
+    ],
+    dotInactiveClass: "test",
+  },
+});
